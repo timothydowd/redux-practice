@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
+import { RestaurantList } from '../src/components/RestaurantList'
 
-function App() {
-  return (
-    <div className="App">
-     hello there
-    </div>
-  );
+class App extends Component {
+
+
+  render() {
+
+    return (
+      <RestaurantList />
+    );
+
+  }
+  
 }
+
 
 export default App;
