@@ -2,14 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class RestaurantLocationSearch extends Component {
-    // constructor(props) {
-    //     super(props);
-    
-    //     // this.handleChange = this.handleChange.bind(this);
-    //   }
+  
 
     render() {
-        console.log(this.props)
+       
         return (
             <div>
                 <form onSubmit={(event) => this.handleSubmit(event)}>
@@ -23,30 +19,30 @@ class RestaurantLocationSearch extends Component {
 
     handleSubmit(event){
         event.preventDefault()
-        console.log(event.target.value)
+        Promise.resolve(this.props.filterRestaurantsByArea()).then(() => {
+            console.log('filteredRestaurants handleSubmit: ', this.props.filteredRestaurants)
+        })
+        
     }
 
     handleChange = (event) => {
         event.preventDefault()
-        console.log(event.target.value)
         Promise.resolve(this.props.updateLocationSearchTerm(event.target.value)).then(() => {
-            console.log('props: ', this.props.locationSearchTerm)
         })
-
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    
     return {
-        updateLocationSearchTerm: (searchTerm) => { dispatch({ type: "UPDATE_LOCATION_SEARCH_TERM", searchTerm: searchTerm }) }
-
+        updateLocationSearchTerm: (searchTerm) => { dispatch({ type: "UPDATE_LOCATION_SEARCH_TERM", searchTerm: searchTerm }) },
+        filterRestaurantsByArea: () => { dispatch({ type: "FILTER_RESTAURANTS_BY_AREA" })}
         }
 }
 
 const mapStateToProps = (state) => {
     return {
-        locationSearchTerm: state.locationSearchTerm
+        locationSearchTerm: state.locationSearchTerm,
+        filteredRestaurants: state.filteredRestaurants
     }
 }
 

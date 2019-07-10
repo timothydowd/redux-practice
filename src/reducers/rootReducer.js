@@ -8,9 +8,10 @@ const initState = {
 }
 
 const rootReducer = ( state = initState, action) => {
-    console.log('in root reducer', action)
+    
     switch (action.type) {
         case 'FILTER_RESTAURANTS_BY_AREA' :
+        console.log('root reducer find restaurants filter comes back as: ', findRestaurantsReducer(state, action))
         return {
             ...state,
             filteredRestaurants: findRestaurantsReducer(state, action)
@@ -21,11 +22,9 @@ const rootReducer = ( state = initState, action) => {
             ...state,
             locationSearchTerm: findRestaurantsReducer(state, action)
         }
-
         default:
         return state
-    }
-    
+    }   
 }
 
 export default rootReducer

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import { RestaurantList } from '../src/components/RestaurantList'
+import  RestaurantList  from '../src/components/RestaurantList'
 import  RestaurantLocationSearch  from '../src/containers/RestaurantLocationSearch'
 
 class App extends Component {
