@@ -13,7 +13,7 @@ describe('filterRestaurantsByAreaReducer', () => {
 
         deepFreeze(state)
         deepFreeze(action)
-         expect(filterRestaurantsByAreaReducer(state, action).filteredRestaurants).to.have.lengthOf(2)
+        expect(filterRestaurantsByAreaReducer(state, action).filteredRestaurants).to.have.lengthOf(2)
 
         const extractedLocations = filterRestaurantsByAreaReducer(state, action).filteredRestaurants.map(restaurant => {
             return restaurant.location

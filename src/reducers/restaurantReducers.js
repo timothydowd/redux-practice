@@ -1,16 +1,19 @@
 const { filterRestaurantsByArea } = require('../utils/reducerHelpers')
 
 
-const filterRestaurantsByAreaReducer = (restaurantData, action) => {
+const findRestaurantsReducer = (state, action) => {
     if(action.type === 'FILTER_RESTAURANTS_BY_AREA'){
         return {
-            filteredRestaurants: filterRestaurantsByArea(restaurantData, action.location)
+            filteredRestaurants: filterRestaurantsByArea(state.restaurantData, action.location)
         }
-    } else {
-        return {
-            restaurantData
-        }
-    }
+    } else if(action.type === 'UPDATE_LOCATION_SEARCH_TERM') {
+        console.log('in findResaturantsReducer update location')
+        return action.searchTerm
+        
+    } 
+        return state
 }
 
-module.exports = { filterRestaurantsByAreaReducer }
+
+
+module.exports = { findRestaurantsReducer }
